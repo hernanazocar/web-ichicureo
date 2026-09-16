@@ -6,7 +6,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X, Calendar } from "lucide-react";
 import Logo from "./Logo";
 
-const navigation = [
+interface NavigationItem {
+  name: string;
+  href: string;
+  submenu?: Array<{ name: string; href: string }>;
+}
+
+const navigation: NavigationItem[] = [
   { name: "Quiénes Somos", href: "/" },
   { name: "Proyectos", href: "/" },
   { name: "Proceso de Compra", href: "/" },
