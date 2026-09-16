@@ -1,9 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Leaf, ArrowRight, Sparkles, Maximize2, Award, Zap, Droplet, Key, MapPin, RadioTower } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { Leaf, ArrowRight, Sparkles, Maximize2, Award, Zap, Droplet, Key, MapPin, TrendingUp, BadgeDollarSign } from "lucide-react";
+
+const rotatingTexts = [
+  "en la naturaleza",
+  "que siempre soñaste",
+  "ideal te espera",
+  "perfecta existe aquí",
+  "con futuro",
+  "tu mejor inversión",
+];
 
 export default function Hero() {
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % rotatingTexts.length);
+    }, 3000); // Cambia cada 3 segundos
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-start pt-32">
       {/* Background Image with enhanced gradient */}
@@ -12,7 +32,7 @@ export default function Hero() {
           className="w-full h-full bg-cover scale-105 animate-[scale_20s_ease-in-out_infinite]"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.1) 100%), url('/hero.png')`,
-            backgroundPosition: 'center top',
+            backgroundPosition: 'center 10%',
             filter: 'brightness(1.05) contrast(1.1) saturate(1.08)'
           }}
         ></div>
@@ -56,23 +76,34 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               className="mb-5 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2"
             >
-              <Sparkles size={14} className="text-primary-light" />
+              <MapPin size={14} className="text-primary-light" />
               <span className="text-white text-[10px] uppercase tracking-[0.15em] font-semibold">
                 Parcelas en Chile
               </span>
             </motion.div>
 
-            {/* Main Heading with gradient */}
+            {/* Main Heading with gradient and rotating text */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.8 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 leading-tight"
             >
-              <span className="block">Tu lugar</span>
-              <span className="block bg-gradient-to-r from-white via-white to-primary-light bg-clip-text text-transparent">
-                en la naturaleza
-              </span>
+              <span className="block">Tu parcela</span>
+              <div className="block relative h-[1.2em] overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentTextIndex}
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -50, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="absolute left-0 top-0 text-white"
+                  >
+                    {rotatingTexts[currentTextIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
             </motion.h1>
 
             {/* Description */}
@@ -130,21 +161,21 @@ export default function Hero() {
               className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6 shadow-2xl hover:shadow-[0_20px_50px_rgba(122,143,92,0.3)] max-w-[280px] group cursor-pointer transition-shadow"
             >
               <div className="flex items-start gap-3">
-                <motion.div 
+                <motion.div
                   className="bg-primary/20 p-2.5 rounded-lg group-hover:bg-primary/30 transition-colors"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Sparkles className="text-white" size={20} />
+                  <Award className="text-white" size={20} />
                 </motion.div>
                 <div>
                   <p className="text-white/60 text-[10px] uppercase tracking-widest mb-1.5 font-medium">
-                    Experiencia
+                    REFERENTES
                   </p>
                   <p className="text-white text-base font-semibold leading-tight">
-                    Vive más cerca
+                    Líderes en el mercado
                     <br />
-                    de lo importante
+                    de parcelas en Chile
                   </p>
                 </div>
               </div>
@@ -172,20 +203,25 @@ export default function Hero() {
               className="bg-primary-dark/30 backdrop-blur-xl border border-primary-light/30 rounded-xl p-6 shadow-2xl hover:shadow-[0_20px_50px_rgba(122,143,92,0.3)] max-w-[280px] group cursor-pointer transition-shadow"
             >
               <div className="flex items-start gap-3">
-                <motion.div 
+                <motion.div
                   className="bg-white/20 p-2.5 rounded-lg group-hover:bg-white/30 transition-colors"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Leaf className="text-primary-light" size={20} />
+                  <TrendingUp className="text-primary-light" size={20} />
                 </motion.div>
                 <div>
                   <p className="text-white text-sm font-bold uppercase tracking-wide leading-snug">
-                    Buenas historias
+                    Tu parcela ideal
                     <br />
-                    comienzan en
+                    está más cerca
                     <br />
-                    <span className="text-primary-light">grandes lugares</span>
+                    <span className="text-primary-light">de lo que imaginas</span>
+                  </p>
+                  <p className="text-white/90 text-[11px] font-semibold mt-2.5 leading-tight">
+                    Facilidades de pago
+                    <br />
+                    a tu medida
                   </p>
                 </div>
               </div>
@@ -205,7 +241,7 @@ export default function Hero() {
           >
             <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center md:justify-between gap-x-4 md:gap-x-6 gap-y-4 md:gap-y-4">
               {[
-                { icon: Maximize2, label: "Parcelas 5.000 mt2" },
+                { icon: Maximize2, label: "Parcelas de 5.000 mt2" },
                 { icon: Award, label: "Rol propio" },
                 { icon: Zap, label: "Factibilidad eléctrica" },
                 { icon: Droplet, label: "Derechos de agua de riego" },

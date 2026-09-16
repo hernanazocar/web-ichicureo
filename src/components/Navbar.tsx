@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, Calendar } from "lucide-react";
 import Logo from "./Logo";
 
 const navigation = [
@@ -37,7 +37,7 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center z-50">
             <Logo white={!scrolled} />
@@ -96,13 +96,18 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="/contacto"
-              className={`text-sm font-medium px-6 py-2 rounded-lg transition-all ${
+              className={`group relative inline-flex items-center gap-2 text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-300 overflow-hidden ${
                 scrolled
-                  ? 'bg-primary hover:bg-primary-dark text-white'
-                  : 'bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30'
+                  ? 'bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white shadow-lg hover:shadow-xl shadow-primary/30 hover:shadow-primary/50 hover:scale-105'
+                  : 'bg-white text-primary-dark hover:bg-gradient-to-r hover:from-primary hover:to-primary-dark hover:text-white border-2 border-white shadow-lg shadow-white/30 hover:shadow-xl hover:shadow-white/50 hover:scale-105'
               }`}
             >
-              Quiero asesoría
+              <span className="relative z-10 flex items-center gap-2">
+                <Calendar size={16} strokeWidth={2.5} />
+                Agendar visita
+              </span>
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
             </Link>
           </div>
 
