@@ -2,12 +2,27 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { TrendingUp, MapPin, Leaf } from "lucide-react";
+import { useRef, useState } from "react";
+import { TrendingUp, MapPin, Leaf, Mail, CheckCircle } from "lucide-react";
 
 export default function UpcomingProjects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      // Aquí iría la integración con tu backend/CRM
+      console.log("Email registrado:", email);
+      setSubmitted(true);
+      setEmail("");
+
+      // Reset después de 5 segundos
+      setTimeout(() => setSubmitted(false), 5000);
+    }
+  };
 
   return (
     <section ref={ref} className="py-16 bg-white">
@@ -22,17 +37,57 @@ export default function UpcomingProjects() {
               Próximos lanzamientos
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-6 leading-tight">
-              Nuevos proyectos,
+              Sé el primero en conocer
               <br />
-              grandes oportunidades
+              nuestros{" "}
+              <span className="bg-gradient-to-r from-primary-dark to-primary bg-clip-text text-transparent">
+                nuevos proyectos
+              </span>
             </h2>
             <p className="text-sm text-text-light mb-8 leading-relaxed max-w-lg">
-              Seguimos creciendo para ofrecerte los mejores lugares de Chile.
-              Conoce nuestros próximos lanzamientos y sé parte desde el inicio.
+              Regístrate en nuestra lista de espera y recibe en primicia información sobre próximos lanzamientos,
+              ubicaciones exclusivas y condiciones especiales para compradores anticipados.
             </p>
-            <button className="text-sm text-primary-dark hover:text-primary font-medium">
-              Ver próximos lanzamientos →
-            </button>
+
+            {/* Waitlist Form */}
+            {!submitted ? (
+              <form onSubmit={handleSubmit} className="max-w-md">
+                <div className="flex gap-2">
+                  <div className="relative flex-1">
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Tu correo electrónico"
+                      required
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary text-sm"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="bg-gradient-to-r from-primary-dark to-primary hover:from-primary hover:to-primary-dark text-white font-semibold px-6 py-3 rounded-lg transition-all hover:scale-105 hover:shadow-lg text-sm whitespace-nowrap"
+                  >
+                    Unirme
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500 mt-3">
+                  Al registrarte, aceptas recibir información sobre nuevos proyectos.
+                </p>
+              </form>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex items-center gap-3 bg-green-50 border border-green-200 rounded-lg p-4 max-w-md"
+              >
+                <CheckCircle className="text-green-600 flex-shrink-0" size={24} />
+                <div>
+                  <p className="text-sm font-semibold text-green-800">¡Registro exitoso!</p>
+                  <p className="text-xs text-green-700">Te notificaremos sobre nuevos lanzamientos.</p>
+                </div>
+              </motion.div>
+            )}
           </motion.div>
 
           {/* Right Image with overlay */}
@@ -45,7 +100,7 @@ export default function UpcomingProjects() {
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80')`
+                backgroundImage: `url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&q=80')`
               }}
             ></div>
 

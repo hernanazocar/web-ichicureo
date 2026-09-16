@@ -111,9 +111,10 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-white/95 text-sm md:text-base mb-7 max-w-xl leading-relaxed"
+              className="text-white text-sm md:text-base mb-7 max-w-xl leading-relaxed font-medium"
+              style={{ textShadow: '0 2px 8px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.6)' }}
             >
-              Invierte, vive o construye ese proyecto de vida en un entorno único, 
+              Invierte, vive o construye ese proyecto de vida en un entorno único,
               con plusvalía y la tranquilidad que siempre soñaste.
             </motion.p>
 

@@ -9,28 +9,28 @@ const soldProjects = [
     id: 1,
     title: "Fundo Santa María",
     location: "VI Región",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80",
     status: "100% VENDIDO"
   },
   {
     id: 2,
     title: "Villas de Requínoa",
     location: "VI Región",
-    image: "https://images.unsplash.com/photo-1464207687429-7505649dae38?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80",
     status: "100% ENTREGADO"
   },
   {
     id: 3,
     title: "Hacienda El Carmen",
     location: "VI Región",
-    image: "https://images.unsplash.com/photo-1523741543316-7f152662c031?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&q=80",
     status: "100% VENDIDO"
   },
   {
     id: 4,
     title: "Los Nogales de San Esteban",
     location: "VI Región",
-    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&q=80",
     status: "100% ENTREGADO"
   }
 ];
