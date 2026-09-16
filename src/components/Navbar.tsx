@@ -7,12 +7,12 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import Logo from "./Logo";
 
 const navigation = [
-  { name: "Quiénes Somos", href: "/quienes-somos" },
-  { name: "Proyectos", href: "/proyectos" },
-  { name: "Proceso de Compra", href: "/proceso-compra" },
-  { name: "Compramos tu Campo", href: "/compramos-tu-campo" },
-  { name: "Tour Virtual", href: "/tour-virtual" },
-  { name: "Contacto", href: "/contacto" },
+  { name: "Quiénes Somos", href: "/" },
+  { name: "Proyectos", href: "/" },
+  { name: "Proceso de Compra", href: "/" },
+  { name: "Compramos tu Campo", href: "/" },
+  { name: "Tour Virtual", href: "/" },
+  { name: "Contacto", href: "/" },
 ];
 
 export default function Navbar() {

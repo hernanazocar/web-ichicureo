@@ -193,7 +193,7 @@ export default function Hero() {
       </div>
 
       {/* Features Bar - Integrated into hero */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 pb-6">
+      <div className="absolute bottom-16 left-0 right-0 z-20">
         <div className="container mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

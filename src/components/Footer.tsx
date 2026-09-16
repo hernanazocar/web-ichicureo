@@ -28,10 +28,10 @@ export default function Footer() {
             <h4 className="text-sm font-bold mb-4 uppercase tracking-wider">Navegación</h4>
             <ul className="space-y-2.5 text-sm">
               <li><Link href="/" className="text-white/70 hover:text-white transition">Inicio</Link></li>
-              <li><Link href="/proyectos" className="text-white/70 hover:text-white transition">Proyectos</Link></li>
-              <li><Link href="/proximos-lanzamientos" className="text-white/70 hover:text-white transition">Próximos Lanzamientos</Link></li>
-              <li><Link href="/noticias" className="text-white/70 hover:text-white transition">Noticias</Link></li>
-              <li><Link href="/contacto" className="text-white/70 hover:text-white transition">Contacto</Link></li>
+              <li><Link href="/" className="text-white/70 hover:text-white transition">Proyectos</Link></li>
+              <li><Link href="/" className="text-white/70 hover:text-white transition">Próximos Lanzamientos</Link></li>
+              <li><Link href="/" className="text-white/70 hover:text-white transition">Noticias</Link></li>
+              <li><Link href="/" className="text-white/70 hover:text-white transition">Contacto</Link></li>
             </ul>
           </div>
 
@@ -39,10 +39,10 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-bold mb-4 uppercase tracking-wider">Proyectos</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><Link href="/proyectos/vi-region" className="text-white/70 hover:text-white transition">VI Región</Link></li>
-              <li><Link href="/proyectos/vii-region" className="text-white/70 hover:text-white transition">VII Región</Link></li>
-              <li><Link href="/proyectos/entregados" className="text-white/70 hover:text-white transition">Proyectos Entregados</Link></li>
-              <li><Link href="/proyectos/todos" className="text-white/70 hover:text-white transition">Todos los Proyectos</Link></li>
+              <li><Link href="/" className="text-white/70 hover:text-white transition">VI Región</Link></li>
+              <li><Link href="/" className="text-white/70 hover:text-white transition">VII Región</Link></li>
+              <li><Link href="/" className="text-white/70 hover:text-white transition">Proyectos Entregados</Link></li>
+              <li><Link href="/" className="text-white/70 hover:text-white transition">Todos los Proyectos</Link></li>
             </ul>
           </div>
 
