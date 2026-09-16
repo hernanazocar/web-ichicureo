@@ -1,13 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAFAFA;
+  --foreground: #1A1A1A;
+
+  /* Colores Corporativos Ichicureo - Mejorados */
+  --primary: #7A8F5C;
+  --primary-dark: #5A6B47;
+  --primary-light: #98B17A;
+  --secondary: #8B7355;
+  --accent: #F8F6F3;
+  --text-dark: #1A1A1A;
+  --text-light: #6B7280;
+  --border: #E5E7EB;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* Paleta Ichicureo */
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-text-dark: var(--text-dark);
+  --color-text-light: var(--text-light);
+  --color-border: var(--border);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -22,5 +43,53 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.02em;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Video background optimization */
+video {
+  object-fit: cover;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--accent);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Remove default focus outline */
+*:focus {
+  outline: none;
+}
+
+/* Custom focus styles */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
