@@ -54,11 +54,12 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-all ${
                     scrolled
                       ? 'text-text-dark hover:text-primary'
                       : 'text-white hover:text-primary-light'
                   }`}
+                  style={!scrolled ? { textShadow: '0 4px 15px rgba(0,0,0,0.9), 0 3px 10px rgba(0,0,0,0.8), 0 2px 6px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.5)' } : {}}
                 >
                   {item.name}
                   {item.submenu && <ChevronDown size={14} />}

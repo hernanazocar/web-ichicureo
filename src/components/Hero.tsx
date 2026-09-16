@@ -9,9 +9,11 @@ export default function Hero() {
       {/* Background Image with enhanced gradient */}
       <div className="absolute inset-0 z-0">
         <div
-          className="w-full h-full bg-cover bg-center scale-105 animate-[scale_20s_ease-in-out_infinite]"
+          className="w-full h-full bg-cover scale-105 animate-[scale_20s_ease-in-out_infinite]"
           style={{
-            backgroundImage: `linear-gradient(135deg, rgba(122,143,92,0.3) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80')`
+            backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.1) 100%), url('/hero.png')`,
+            backgroundPosition: 'center top',
+            filter: 'brightness(1.05) contrast(1.1) saturate(1.08)'
           }}
         ></div>
       </div>
