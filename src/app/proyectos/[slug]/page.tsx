@@ -10,7 +10,8 @@ import {
   MapPin, ChevronRight, Calendar, DoorOpen, Waypoints, Droplet,
   Lightbulb, Square, RadioTower, Phone, Mail, User, MessageSquare,
   CheckCircle2, Download, Share2, FileText, Map, Maximize2, Eye,
-  ChevronLeft, ExternalLink, Navigation
+  ChevronLeft, ExternalLink, Navigation, School, ShoppingCart, Building,
+  Hospital, Store, Trees, Home
 } from "lucide-react";
 
 const projectsData: { [key: string]: any } = {
@@ -51,6 +52,14 @@ const projectsData: { [key: string]: any } = {
       "Sector de alta plusvalía",
       "Facilidades de pago 24 meses",
       "Asesoría legal incluida"
+    ],
+    nearbyServices: [
+      { name: "Colegio San Felipe", icon: School, distance: "2,5 km", time: "5 min" },
+      { name: "Supermercado Líder", icon: ShoppingCart, distance: "3 km", time: "6 min" },
+      { name: "Municipalidad Los Andes", icon: Building, distance: "4 km", time: "8 min" },
+      { name: "Hospital San Juan de Dios", icon: Hospital, distance: "4,5 km", time: "9 min" },
+      { name: "Mall Portal Andino", icon: Store, distance: "5 km", time: "10 min" },
+      { name: "Parque El Resbalón", icon: Trees, distance: "3,5 km", time: "7 min" }
     ],
     coordinates: { lat: -32.8333, lng: -70.5167 },
     masterPlan: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80",
@@ -280,6 +289,48 @@ export default function ProyectoDetalle() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ubicación Estratégica */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4">
+              <MapPin size={32} className="text-primary" strokeWidth={2.5} />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Ubicación Estratégica</h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Cerca de todo lo que necesitas para tu día a día
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {project.nearbyServices?.map((service: any, index: number) => {
+              const Icon = service.icon;
+              return (
+                <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-200 hover:border-primary/40 hover:shadow-lg transition-all group">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <Icon size={24} className="text-primary" strokeWidth={2.5} />
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-primary">{service.distance}</div>
+                      <div className="text-xs text-gray-500 font-semibold">{service.time} aprox.</div>
+                    </div>
+                  </div>
+                  <h4 className="font-bold text-gray-900 text-base">{service.name}</h4>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-green-50 border border-green-200 rounded-full">
+              <CheckCircle2 size={20} className="text-green-600" strokeWidth={2.5} />
+              <span className="text-green-700 font-semibold">Conectividad excepcional con todos los servicios</span>
             </div>
           </div>
         </div>
