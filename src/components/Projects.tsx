@@ -145,7 +145,7 @@ export default function Projects() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project, index) => {
-            const statusColors = {
+            const statusColors: Record<string, string> = {
               blue: "bg-blue-500",
               orange: "bg-orange-500",
               green: "bg-green-500",

@@ -78,7 +78,7 @@ export default function ProyectoDetalle() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar white />
+      <Navbar />
 
       {/* Hero con imagen de fondo */}
       <section className="relative h-[70vh] min-h-[600px] flex items-end">
