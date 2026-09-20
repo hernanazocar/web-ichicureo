@@ -1,0 +1,38 @@
+{
+  "proyectos": [
+    {
+      "id": 1,
+      "slug": "mirador-de-rinconada",
+      "title": "Mirador de Rinconada",
+      "location": "Rinconada, Los Andes",
+      "region": "Valparaíso",
+      "price": "$34.900.000",
+      "priceRange": "$34.900.000 - $42.500.000",
+      "status": "Recién lanzado",
+      "statusColor": "blue",
+      "promotion": "15% descuento Septiembre",
+      "promotionType": "discount",
+      "size": "5.000 m²",
+      "sizeRange": "5.000 - 7.000 m²",
+      "totalUnits": 45,
+      "availableUnits": 12,
+      "delivery": "Inmediata",
+      "rolStatus": "Aprobado",
+      "description": "Proyecto exclusivo de parcelas ubicado en el corazón de Los Andes",
+      "images": [
+        "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&q=80"
+      ],
+      "amenities": ["Portón", "Caminos", "Agua", "Luz", "Terreno plano", "Sin torres"],
+      "active": true,
+      "destacadoHome": true,
+      "proximoLanzamiento": false,
+      "vendido": false,
+      "createdAt": "2024-01-15",
+      "updatedAt": "2024-01-15"
+    }
+  ],
+  "settings": {
+    "siteName": "Inmobiliaria Chicureo",
+    "adminPassword": "admin123"
+  }
+}

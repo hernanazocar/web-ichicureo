@@ -13,12 +13,19 @@ interface NavigationItem {
 }
 
 const navigation: NavigationItem[] = [
-  { name: "Quiénes Somos", href: "/" },
-  { name: "Proyectos", href: "/" },
-  { name: "Proceso de Compra", href: "/" },
-  { name: "Compramos tu Campo", href: "/" },
-  { name: "Tour Virtual", href: "/" },
-  { name: "Contacto", href: "/" },
+  { name: "Quiénes Somos", href: "/quienes-somos" },
+  {
+    name: "Proyectos",
+    href: "/proyectos",
+    submenu: [
+      { name: "En Venta", href: "/proyectos" },
+      { name: "Agotados", href: "/proyectos/agotados" }
+    ]
+  },
+  { name: "Proceso de Compra", href: "/proceso-compra" },
+  { name: "Compramos tu Campo", href: "/compramos-tu-campo" },
+  { name: "Tour Virtual", href: "/tour-virtual" },
+  { name: "Contacto", href: "/contacto" },
 ];
 
 export default function Navbar() {

@@ -1,0 +1,417 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import {
+  MapPin, ChevronRight, Calendar, DoorOpen, Waypoints, Droplet,
+  Lightbulb, Square, RadioTower, Phone, Mail, User, MessageSquare,
+  CheckCircle2, Download, Share2, FileText, Map, Maximize2, Eye,
+  ChevronLeft, ExternalLink, Navigation
+} from "lucide-react";
+
+const projectsData: { [key: string]: any } = {
+  "mirador-de-rinconada": {
+    title: "Mirador de Rinconada",
+    location: "Rinconada, Los Andes",
+    region: "Valparaíso",
+    price: "$34.900.000",
+    priceRange: "$34.900.000 - $42.500.000",
+    status: "Recién lanzado",
+    promotion: "15% descuento Septiembre",
+    size: "5.000 m²",
+    sizeRange: "5.000 - 7.000 m²",
+    totalUnits: 45,
+    availableUnits: 12,
+    delivery: "Inmediata",
+    rolStatus: "Aprobado",
+    description: "Proyecto exclusivo de parcelas ubicado en el corazón de Los Andes, con impresionante vista a la cordillera. Ideal para inversión o construcción de vivienda campestre.",
+    logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232B5329'/%3E%3Ctext x='50' y='62' font-family='Arial,sans-serif' font-size='36' font-weight='bold' fill='white' text-anchor='middle'%3EMR%3C/text%3E%3C/svg%3E",
+    heroImage: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1920&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&q=80",
+      "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1200&q=80",
+      "https://images.unsplash.com/photo-1595209457335-235f23d5e838?w=1200&q=80"
+    ],
+    amenities: [
+      { name: "Portón de acceso", icon: DoorOpen, description: "Acceso controlado" },
+      { name: "Caminos estabilizados", icon: Waypoints, description: "Red vial pavimentada" },
+      { name: "Agua de riego", icon: Droplet, description: "Derechos garantizados" },
+      { name: "Factibilidad eléctrica", icon: Lightbulb, description: "Proyecto aprobado" },
+      { name: "Terreno plano", icon: Square, description: "Listo para construir" },
+      { name: "Sin torres", icon: RadioTower, description: "Zona libre" }
+    ],
+    highlights: [
+      "Vista panorámica a la Cordillera",
+      "10 minutos del centro",
+      "Sector de alta plusvalía",
+      "Facilidades de pago 24 meses",
+      "Asesoría legal incluida"
+    ],
+    coordinates: { lat: -32.8333, lng: -70.5167 },
+    masterPlan: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80",
+    brochure: "/brochures/mirador-rinconada.pdf",
+    tourVirtual: "https://my.matterport.com/show/?m=SxQL3iGyoDo"
+  }
+};
+
+export default function ProyectoDetalle() {
+  const params = useParams();
+  const slug = params.slug as string;
+  const project = projectsData[slug] || projectsData["mirador-de-rinconada"];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const percentageSold = Math.round(((project.totalUnits - project.availableUnits) / project.totalUnits) * 100);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+    setTimeout(() => setFormSubmitted(false), 5000);
+  };
+
+  return (
+    <main className="min-h-screen bg-white">
+      <Navbar white />
+
+      {/* Hero con imagen de fondo */}
+      <section className="relative h-[70vh] min-h-[600px] flex items-end">
+        {/* Imagen de fondo */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${project.heroImage})` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
+        </div>
+
+        {/* Contenido */}
+        <div className="relative z-10 w-full pb-16 pt-32">
+          <div className="container mx-auto px-6 lg:px-8">
+            {/* Breadcrumb */}
+            <div className="flex items-center gap-2 text-sm text-white/80 mb-6">
+              <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+              <ChevronRight size={16} />
+              <Link href="/proyectos" className="hover:text-white transition-colors">Proyectos</Link>
+              <ChevronRight size={16} />
+              <span className="text-white font-semibold">{project.title}</span>
+            </div>
+
+            {/* Logo destacado */}
+            {project.logo && (
+              <div className="mb-6">
+                <div className="inline-flex items-center justify-center w-32 h-32 bg-white rounded-2xl shadow-2xl p-4 border-4 border-white/50 backdrop-blur-sm">
+                  <img src={project.logo} alt={`Logo ${project.title}`} className="w-full h-full object-contain" />
+                </div>
+              </div>
+            )}
+
+            {/* Badges */}
+            <div className="flex items-center gap-3 mb-4">
+              <span className="bg-blue-500 text-white text-xs px-3 py-1.5 rounded-full font-bold uppercase backdrop-blur-sm">
+                {project.status}
+              </span>
+              {project.promotion && (
+                <span className="bg-red-500 text-white text-xs px-3 py-1.5 rounded-full font-bold backdrop-blur-sm">
+                  {project.promotion}
+                </span>
+              )}
+            </div>
+
+            {/* Título */}
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
+              {project.title}
+            </h1>
+
+            {/* Ubicación */}
+            <div className="flex items-center gap-2 text-white/90 mb-8">
+              <MapPin size={24} className="text-primary drop-shadow-lg" strokeWidth={2.5} />
+              <span className="text-xl font-medium drop-shadow-lg">{project.location}</span>
+            </div>
+
+            {/* Stats rápidas */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                <div className="text-xs text-white/70 mb-1">Desde</div>
+                <div className="text-2xl font-bold text-white">{project.size}</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                <div className="text-xs text-white/70 mb-1">Precio</div>
+                <div className="text-2xl font-bold text-white">{project.price}</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                <div className="text-xs text-white/70 mb-1">Disponibles</div>
+                <div className="text-2xl font-bold text-white">{project.availableUnits}/{project.totalUnits}</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                <div className="text-xs text-white/70 mb-1">Entrega</div>
+                <div className="text-2xl font-bold text-white">{project.delivery}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Barra de acciones rápidas */}
+      <section className="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between py-4">
+            <div className="flex items-center gap-6">
+              <button className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary transition-colors">
+                <Download size={18} />
+                Descargar Brochure
+              </button>
+              <button className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary transition-colors">
+                <Map size={18} />
+                Ver Plano
+              </button>
+              <a href={project.tourVirtual} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary transition-colors">
+                <Eye size={18} />
+                Tour 360°
+              </a>
+              <button className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary transition-colors">
+                <Navigation size={18} />
+                Cómo Llegar
+              </button>
+            </div>
+            <a href="#contacto">
+              <button className="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-primary-dark transition-colors">
+                Agendar Visita
+              </button>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Descripción y características */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Descripción */}
+            <div className="lg:col-span-2 space-y-8">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Sobre el Proyecto</h2>
+                <p className="text-gray-600 text-lg leading-relaxed">{project.description}</p>
+              </div>
+
+              {/* Características */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Características</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {project.amenities.map((amenity: any, index: number) => {
+                    const Icon = amenity.icon;
+                    return (
+                      <div key={index} className="bg-white rounded-xl p-4 border border-gray-200 hover:border-primary/40 hover:shadow-md transition-all">
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <Icon size={20} className="text-primary" strokeWidth={2.5} />
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-gray-900 text-sm mb-0.5">{amenity.name}</h4>
+                            <p className="text-xs text-gray-600">{amenity.description}</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Beneficios */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Beneficios</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {project.highlights.map((highlight: string, index: number) => (
+                    <div key={index} className="flex items-start gap-2">
+                      <CheckCircle2 size={18} className="text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                      <span className="text-gray-700 text-sm">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Card de precio sticky */}
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-2xl border-2 border-primary/20 p-6 shadow-lg sticky top-24">
+                <div className="text-sm text-gray-600 uppercase tracking-wider mb-2">Precio desde</div>
+                <div className="text-4xl font-bold text-primary mb-2">{project.price}</div>
+                <div className="text-sm text-gray-600 mb-6">Rango: {project.priceRange}</div>
+
+                <div className="mb-6">
+                  <div className="flex justify-between text-sm mb-2">
+                    <span className="text-gray-600">Vendido</span>
+                    <span className="font-bold text-primary">{percentageSold}%</span>
+                  </div>
+                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-primary transition-all duration-1000" style={{ width: `${percentageSold}%` }}></div>
+                  </div>
+                </div>
+
+                <div className="space-y-3 mb-6">
+                  <a href="#contacto">
+                    <button className="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-primary-dark transition-colors">
+                      Agendar Visita
+                    </button>
+                  </a>
+                  <button className="w-full border-2 border-gray-200 text-gray-700 font-semibold py-3 rounded-lg hover:border-primary hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                    <Download size={18} />
+                    Descargar Brochure
+                  </button>
+                  <button className="w-full border-2 border-gray-200 text-gray-700 font-semibold py-3 rounded-lg hover:border-primary hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                    <Share2 size={18} />
+                    Compartir
+                  </button>
+                </div>
+
+                <div className="pt-6 border-t border-gray-200 space-y-2">
+                  <div className="flex items-center gap-2 text-sm text-gray-700">
+                    <CheckCircle2 size={16} className="text-green-500" />
+                    <span>Facilidades de pago</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-700">
+                    <CheckCircle2 size={16} className="text-green-500" />
+                    <span>Asesoría legal incluida</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tour Virtual */}
+      {project.tourVirtual && (
+        <section className="py-16 bg-gray-900 text-white">
+          <div className="container mx-auto px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-4">Tour Virtual 360°</h2>
+              <p className="text-gray-300">Explora el proyecto desde la comodidad de tu hogar</p>
+            </div>
+            <div className="max-w-5xl mx-auto">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                <iframe
+                  src={project.tourVirtual}
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="xr-spatial-tracking"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Galería */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Galería</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {project.images.map((image: string, index: number) => (
+              <div key={index} className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group">
+                <div className="w-full h-full bg-cover bg-center transition-transform group-hover:scale-110 duration-300" style={{ backgroundImage: `url(${image})` }}></div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={32} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Plano y Ubicación */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Plano Maestro */}
+            <div className="bg-white rounded-2xl p-6 border border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Plano Maestro</h3>
+              <div className="relative aspect-square rounded-xl overflow-hidden mb-4">
+                <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${project.masterPlan})` }}></div>
+              </div>
+              <button className="w-full bg-primary/10 text-primary font-semibold py-3 rounded-lg hover:bg-primary/20 transition-colors flex items-center justify-center gap-2">
+                <Download size={18} />
+                Descargar Plano
+              </button>
+            </div>
+
+            {/* Mapa */}
+            <div className="bg-white rounded-2xl p-6 border border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Ubicación</h3>
+              <div className="relative aspect-square rounded-xl overflow-hidden mb-4 bg-gray-200">
+                <iframe
+                  src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106476.77!2d${project.coordinates.lng}!3d${project.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDQ5JzU5LjkiUyA3MMKwMzEnMDAuMSJX!5e0!3m2!1sen!2scl!4v1234567890`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                ></iframe>
+              </div>
+              <a href={`https://www.google.com/maps?q=${project.coordinates.lat},${project.coordinates.lng}`} target="_blank" rel="noopener noreferrer">
+                <button className="w-full bg-primary/10 text-primary font-semibold py-3 rounded-lg hover:bg-primary/20 transition-colors flex items-center justify-center gap-2">
+                  <Navigation size={18} />
+                  Cómo Llegar
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Formulario de contacto */}
+      <section id="contacto" className="py-20 bg-gray-900 text-white">
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">¿Interesado en este proyecto?</h2>
+            <p className="text-gray-300 text-lg">Completa el formulario y un asesor se contactará contigo</p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label className="block text-sm font-semibold mb-2">Nombre *</label>
+                <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder:text-white/50" placeholder="Tu nombre" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold mb-2">Email *</label>
+                <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder:text-white/50" placeholder="tu@email.com" />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-sm font-semibold mb-2">Teléfono *</label>
+                <input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder:text-white/50" placeholder="+56 9 1234 5678" />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-sm font-semibold mb-2">Mensaje</label>
+                <textarea value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder:text-white/50 min-h-[120px]" placeholder="Cuéntanos sobre tu interés..."></textarea>
+              </div>
+            </div>
+
+            {formSubmitted ? (
+              <div className="bg-green-500/20 border border-green-500/50 rounded-xl p-4 flex items-center gap-3">
+                <CheckCircle2 className="text-green-400" size={24} />
+                <div>
+                  <p className="font-semibold">¡Mensaje enviado!</p>
+                  <p className="text-sm text-gray-300">Un asesor se contactará pronto.</p>
+                </div>
+              </div>
+            ) : (
+              <button type="submit" className="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-primary-dark transition-colors">
+                Enviar Consulta
+              </button>
+            )}
+          </form>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}

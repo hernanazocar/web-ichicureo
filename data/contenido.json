@@ -1,0 +1,248 @@
+{
+  "home": {
+    "hero": {
+      "titulo": "Tu parcela",
+      "subtitulo": "Invierte, vive o construye ese proyecto de vida en un entorno único, con plusvalía y la tranquilidad que siempre soñaste.",
+      "botonTexto": "Ver proyectos",
+      "botonLink": "/proyectos",
+      "imagenFondo": "/hero.png",
+      "tagTexto": "Parcelas en Chile",
+      "textosRotativos": [
+        "en la naturaleza",
+        "que siempre soñaste",
+        "ideal te espera",
+        "perfecta existe aquí",
+        "con futuro",
+        "tu mejor inversión"
+      ],
+      "cards": [
+        { "icono": "Maximize2", "titulo": "Parcelas de 5.000 mt2", "descripcion": "" },
+        { "icono": "Award", "titulo": "Rol propio", "descripcion": "" },
+        { "icono": "Zap", "titulo": "Factibilidad eléctrica", "descripcion": "" },
+        { "icono": "Droplet", "titulo": "Derechos de agua de riego", "descripcion": "" },
+        { "icono": "Key", "titulo": "Portón de Acceso", "descripcion": "" },
+        { "icono": "MapPin", "titulo": "Caminos Estabilizados", "descripcion": "" }
+      ]
+    },
+    "stats": [
+      { "value": "26", "label": "Proyectos", "suffix": "+" },
+      { "value": "800", "label": "Parcelas vendidas", "suffix": "+" },
+      { "value": "15", "label": "Años de experiencia", "suffix": "" },
+      { "value": "98", "label": "Clientes satisfechos", "suffix": "%" }
+    ],
+    "proyectosDestacados": {
+      "titulo": "Proyectos Destacados",
+      "subtitulo": "Descubre nuestras mejores oportunidades",
+      "proyectosSeleccionados": [],
+      "mostrarCantidad": 6
+    },
+    "proximosProyectos": {
+      "etiqueta": "PRÓXIMOS LANZAMIENTOS",
+      "tituloGrande": "Sé el primero en conocer",
+      "tituloDestacado": "nuestros nuevos proyectos",
+      "descripcion": "Regístrate en nuestra lista de espera y recibe en primicia información sobre próximos lanzamientos, ubicaciones exclusivas y condiciones especiales para compradores anticipados.",
+      "formulario": {
+        "placeholder": "Tu correo electrónico",
+        "botonTexto": "Unirme",
+        "textoConfirmacion": "Al registrarte, aceptas recibir información sobre nuevos proyectos."
+      },
+      "cardLateral": {
+        "etiqueta": "PRÓXIMAMENTE",
+        "titulo": "Invierte en",
+        "subtitulo": "tu futuro",
+        "ubicacion": "EN LOS ANDES Y VI REGIÓN",
+        "imagenFondo": "https://images.unsplash.com/photo-1500382017468-9049fed747ef",
+        "beneficios": [
+          { "icono": "TrendingUp", "texto": "Alta plusvalía" },
+          { "icono": "MapPin", "texto": "Ubicaciones estratégicas" },
+          { "icono": "Leaf", "texto": "Entornos naturales" }
+        ]
+      },
+      "mostrar": true
+    },
+    "proyectosVendidos": {
+      "titulo": "Proyectos Vendidos",
+      "subtitulo": "Familias que ya cumplieron su sueño",
+      "descripcion": "Estos proyectos ya están completamente vendidos. Únete a las familias que confiaron en nosotros.",
+      "proyectosSeleccionados": [],
+      "mostrar": true
+    },
+    "inversion": {
+      "etiqueta": "Más que parcelas",
+      "titulo": "Invertir en tierra",
+      "subtitulo": "es invertir en tu futuro",
+      "botonTexto": "Conoce más sobre nosotros",
+      "botonLink": "/quienes-somos",
+      "items": [
+        { "icono": "Shield", "titulo": "Patrimonio seguro", "descripcion": "Un activo real y tangible" },
+        { "icono": "Heart", "titulo": "Calidad de vida", "descripcion": "Naturaleza y tranquilidad" },
+        { "icono": "TrendingUp", "titulo": "Plusvalía", "descripcion": "Zonas con alta plusvalía" },
+        { "icono": "Users", "titulo": "Acompañamiento", "descripcion": "Desde la reserva hasta la entrega" }
+      ]
+    },
+    "equipo": {
+      "etiqueta": "NUESTRO EQUIPO",
+      "titulo": "Asesores que te acompañan",
+      "subtitulo": "Te guiamos en todo el proceso, con un trato cercano y profesional.",
+      "textoBoton": "Conoce a todo el equipo",
+      "miembros": [
+        { "nombre": "Andrea", "cargo": "Asesora Comercial", "foto": "" },
+        { "nombre": "Cony", "cargo": "Asesora Comercial", "foto": "" },
+        { "nombre": "Angélica", "cargo": "Asesora Comercial", "foto": "" },
+        { "nombre": "Carolina", "cargo": "Asesora Comercial", "foto": "" },
+        { "nombre": "Fabrizio", "cargo": "Asesor Comercial", "foto": "" },
+        { "nombre": "Daniela", "cargo": "Asesora Comercial", "foto": "" }
+      ],
+      "mostrar": true
+    },
+    "contacto": {
+      "titulo": "Hablemos de tu proyecto",
+      "descripcion": "Completa el formulario y uno de nuestros asesores te contactará a la brevedad.",
+      "imagenFondo": "https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1920&q=80",
+      "textoDecorativo": "LA\nNATURALEZA\nTAMBIÉN\nES PARTE\nDE TU HISTORIA",
+      "botonTexto": "Quiero que me contacten",
+      "infoContacto": {
+        "telefono": "+58 9 1234 5678",
+        "email": "contacto@inmobiliariachicureo.cl",
+        "direccion": "Santiago, Chile"
+      },
+      "mostrar": true
+    }
+  },
+  "quienesSomos": {
+    "hero": {
+      "title": "Más de 15 años creando sueños en el campo",
+      "subtitle": "Somos la inmobiliaria líder en parcelas de agrado en la zona central de Chile",
+      "backgroundImage": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2532"
+    },
+    "historia": {
+      "title": "Nuestra Historia",
+      "content": "Desde 2009, hemos ayudado a más de 800 familias a cumplir su sueño de tener una parcela en el campo. Comenzamos con un pequeño proyecto en Los Andes y hoy somos referentes en el mercado de parcelas de agrado.",
+      "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073"
+    },
+    "mision": {
+      "title": "Misión",
+      "content": "Facilitar el acceso a parcelas de agrado de calidad, ofreciendo proyectos sustentables con servicios básicos y en ubicaciones privilegiadas.",
+      "icon": "target"
+    },
+    "vision": {
+      "title": "Visión",
+      "content": "Ser la inmobiliaria más confiable y reconocida en parcelas de agrado, expandiéndonos a nuevas regiones y manteniendo nuestra excelencia.",
+      "icon": "eye"
+    },
+    "valores": [
+      { "title": "Transparencia", "description": "Comunicación clara en cada etapa" },
+      { "title": "Calidad", "description": "Proyectos con los mejores estándares" },
+      { "title": "Compromiso", "description": "Acompañamiento permanente" },
+      { "title": "Sustentabilidad", "description": "Respeto por el medio ambiente" }
+    ]
+  },
+  "procesCompra": {
+    "hero": {
+      "title": "Proceso de compra simple y transparente",
+      "subtitle": "Te acompañamos en cada paso hasta que tu parcela sea tuya",
+      "backgroundImage": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073"
+    },
+    "pasos": [
+      {
+        "numero": 1,
+        "title": "Cotiza y reserva",
+        "description": "Elige tu parcela ideal y realiza la reserva con un pie inicial"
+      },
+      {
+        "numero": 2,
+        "title": "Evaluación crediticia",
+        "description": "Revisamos tu situación financiera y te ofrecemos las mejores condiciones"
+      },
+      {
+        "numero": 3,
+        "title": "Firma de promesa",
+        "description": "Formalizamos el compromiso de compraventa ante notario"
+      },
+      {
+        "numero": 4,
+        "title": "Escrituración",
+        "description": "Firmamos la escritura definitiva y transfieres el título de dominio"
+      },
+      {
+        "numero": 5,
+        "title": "¡Tu parcela está lista!",
+        "description": "Recibe las llaves y comienza a disfrutar de tu terreno"
+      }
+    ],
+    "documentos": [
+      "Cédula de identidad vigente",
+      "Certificado de matrimonio (si aplica)",
+      "Liquidaciones de sueldo (últimas 3)",
+      "Certificado de AFP",
+      "Declaración de impuestos"
+    ],
+    "facilidades": [
+      { "title": "Pie desde 10%", "description": "O financiamiento 100%" },
+      { "title": "Hasta 120 cuotas", "description": "Plazo flexible según tu capacidad" },
+      { "title": "Tasa preferencial", "description": "Las mejores condiciones del mercado" }
+    ]
+  },
+  "compramosCampo": {
+    "hero": {
+      "title": "¿Tienes un campo que quieres vender?",
+      "subtitle": "Te lo compramos al mejor precio del mercado",
+      "backgroundImage": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2532"
+    },
+    "beneficios": [
+      { "title": "Tasación gratuita", "description": "Evaluamos tu propiedad sin costo" },
+      { "title": "Pago al contado", "description": "Te pagamos de inmediato" },
+      { "title": "Proceso rápido", "description": "En menos de 30 días" },
+      { "title": "Sin comisiones", "description": "No cobramos intermediación" }
+    ],
+    "requisitos": [
+      "Terreno en zona central de Chile",
+      "Superficie mínima de 5 hectáreas",
+      "Documentación al día",
+      "Acceso por camino"
+    ]
+  },
+  "tourVirtual": {
+    "hero": {
+      "title": "Recorre nuestros proyectos desde casa",
+      "subtitle": "Explora cada rincón con nuestro tour 360°",
+      "videoUrl": "https://videos.pexels.com/video-files/2491284/2491284-hd_1920_1080_25fps.mp4"
+    },
+    "tourUrl": "https://ichicureo.cl/360/mirador-de-rinconada/",
+    "proyectos": [
+      { "nombre": "Mirador de Rinconada", "url": "https://ichicureo.cl/360/mirador-de-rinconada/" }
+    ]
+  },
+  "contacto": {
+    "hero": {
+      "title": "Hablemos de tu proyecto",
+      "subtitle": "Nuestro equipo está listo para asesorarte",
+      "backgroundImage": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073"
+    },
+    "oficina": {
+      "direccion": "Av. Principal 1234, Los Andes",
+      "telefono": "+56 9 1234 5678",
+      "email": "contacto@ichicureo.cl",
+      "horario": "Lunes a Viernes 9:00 - 18:00"
+    },
+    "redes": {
+      "whatsapp": "+56912345678",
+      "facebook": "inmobiliariachicureo",
+      "instagram": "@ichicureo",
+      "linkedin": "inmobiliaria-chicureo"
+    },
+    "mapa": {
+      "lat": -32.8340,
+      "lng": -70.5990,
+      "zoom": 15
+    }
+  },
+  "configuracion": {
+    "nombreSitio": "Inmobiliaria Chicureo",
+    "logo": "/logo.png",
+    "colores": {
+      "primario": "#2E7D32",
+      "secundario": "#1B5E20"
+    }
+  }
+}

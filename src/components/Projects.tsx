@@ -12,6 +12,7 @@ const projects = [
     location: "Rinconada, Los Andes",
     price: "$34.900.000",
     image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80&fit=crop",
+    logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232B5329'/%3E%3Ctext x='50' y='62' font-family='Arial,sans-serif' font-size='36' font-weight='bold' fill='white' text-anchor='middle'%3EMR%3C/text%3E%3C/svg%3E",
     featured: true,
     status: "Recién lanzado",
     statusColor: "blue",
@@ -171,8 +172,15 @@ export default function Projects() {
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
+                  {/* Logo del proyecto */}
+                  {project.logo && (
+                    <div className="absolute top-3 right-3 w-16 h-16 bg-white rounded-xl shadow-lg p-2 flex items-center justify-center">
+                      <img src={project.logo} alt={`Logo ${project.title}`} className="w-full h-full object-contain" />
+                    </div>
+                  )}
+
                   {/* Tags Top */}
-                  <div className="absolute top-3 left-3 right-3 flex flex-col items-start gap-2">
+                  <div className="absolute top-3 left-3 right-20 flex flex-col items-start gap-2">
                     {/* Línea 1: STATUS */}
                     <span className={`${statusColors[project.statusColor]} text-white text-[10px] px-3 py-1.5 rounded-full font-bold uppercase tracking-wide shadow-lg`}>
                       {project.status}
