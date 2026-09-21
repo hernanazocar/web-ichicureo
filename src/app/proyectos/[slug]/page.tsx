@@ -338,22 +338,58 @@ export default function ProyectoDetalle() {
 
       {/* Tour Virtual */}
       {project.tourVirtual && (
-        <section className="py-16 bg-gray-900 text-white">
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Tour Virtual 360°</h2>
-              <p className="text-gray-300">Explora el proyecto desde la comodidad de tu hogar</p>
+        <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 relative overflow-hidden">
+          {/* Elementos decorativos de fondo */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+
+          <div className="container mx-auto px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-2xl mb-6 border border-primary/20">
+                <Eye size={32} className="text-primary" strokeWidth={2.5} />
+              </div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Tour Virtual 360°</h2>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                Explora cada rincón del proyecto desde la comodidad de tu hogar
+              </p>
             </div>
-            <div className="max-w-5xl mx-auto">
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                <iframe
-                  src={project.tourVirtual}
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  allowFullScreen
-                  allow="xr-spatial-tracking"
-                ></iframe>
+
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-white rounded-3xl p-4 shadow-2xl border border-gray-200/50 backdrop-blur-sm">
+                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-gray-100">
+                  <iframe
+                    src={project.tourVirtual}
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allowFullScreen
+                    allow="xr-spatial-tracking"
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+
+                {/* Información adicional */}
+                <div className="mt-6 flex items-center justify-between px-4">
+                  <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                      <span className="font-semibold">Tour interactivo activo</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <Maximize2 size={16} className="text-primary" />
+                      <span>Pantalla completa disponible</span>
+                    </div>
+                  </div>
+                  <a
+                    href={project.tourVirtual}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors font-semibold text-sm"
+                  >
+                    <ExternalLink size={16} />
+                    Abrir en nueva ventana
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -418,43 +454,76 @@ export default function ProyectoDetalle() {
       </section>
 
       {/* Formulario de contacto */}
-      <section id="contacto" className="py-20 bg-gray-900 text-white">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+      <section id="contacto" className="py-20 bg-gradient-to-br from-blue-50/30 via-white to-gray-50 relative overflow-hidden">
+        {/* Elementos decorativos */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">¿Interesado en este proyecto?</h2>
-            <p className="text-gray-300 text-lg">Completa el formulario y un asesor se contactará contigo</p>
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-2xl mb-6 border border-primary/20">
+              <MessageSquare size={32} className="text-primary" strokeWidth={2.5} />
+            </div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">¿Interesado en este proyecto?</h2>
+            <p className="text-gray-600 text-lg">Completa el formulario y un asesor se contactará contigo</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+          <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl border border-gray-200/50">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
-                <label className="block text-sm font-semibold mb-2">Nombre *</label>
-                <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder:text-white/50" placeholder="Tu nombre" />
+                <label className="block text-sm font-bold mb-2 text-gray-800">Nombre *</label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-gray-900 placeholder:text-gray-400 transition-all"
+                  placeholder="Tu nombre"
+                />
               </div>
               <div>
-                <label className="block text-sm font-semibold mb-2">Email *</label>
-                <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder:text-white/50" placeholder="tu@email.com" />
+                <label className="block text-sm font-bold mb-2 text-gray-800">Email *</label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-gray-900 placeholder:text-gray-400 transition-all"
+                  placeholder="tu@email.com"
+                />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-sm font-semibold mb-2">Teléfono *</label>
-                <input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder:text-white/50" placeholder="+56 9 1234 5678" />
+                <label className="block text-sm font-bold mb-2 text-gray-800">Teléfono *</label>
+                <input
+                  type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-gray-900 placeholder:text-gray-400 transition-all"
+                  placeholder="+56 9 1234 5678"
+                />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-sm font-semibold mb-2">Mensaje</label>
-                <textarea value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder:text-white/50 min-h-[120px]" placeholder="Cuéntanos sobre tu interés..."></textarea>
+                <label className="block text-sm font-bold mb-2 text-gray-800">Mensaje</label>
+                <textarea
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-gray-900 placeholder:text-gray-400 min-h-[120px] transition-all resize-none"
+                  placeholder="Cuéntanos sobre tu interés..."
+                ></textarea>
               </div>
             </div>
 
             {formSubmitted ? (
-              <div className="bg-green-500/20 border border-green-500/50 rounded-xl p-4 flex items-center gap-3">
-                <CheckCircle2 className="text-green-400" size={24} />
+              <div className="bg-green-50 border-2 border-green-500 rounded-xl p-4 flex items-center gap-3">
+                <CheckCircle2 className="text-green-600" size={24} strokeWidth={2.5} />
                 <div>
-                  <p className="font-semibold">¡Mensaje enviado!</p>
-                  <p className="text-sm text-gray-300">Un asesor se contactará pronto.</p>
+                  <p className="font-bold text-green-900">¡Mensaje enviado!</p>
+                  <p className="text-sm text-green-700">Un asesor se contactará pronto.</p>
                 </div>
               </div>
             ) : (
-              <button type="submit" className="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-primary-dark transition-colors">
+              <button type="submit" className="w-full bg-gradient-to-r from-primary to-blue-600 text-white font-bold py-4 rounded-xl hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
                 Enviar Consulta
               </button>
             )}
