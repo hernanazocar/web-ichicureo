@@ -129,35 +129,39 @@ export default function QuienesSomos() {
               </div>
 
               <div className="space-y-6 text-text-light leading-relaxed">
-                <p className="text-lg">
-                  <span className="font-bold text-primary">Inmobiliaria Chicureo</span> nació en 2009
-                  con una visión clara: democratizar el acceso a parcelas de calidad en las mejores
-                  zonas de Chile.
+                <p className="text-lg font-semibold text-text-dark">
+                  Desde 2009, hemos sido parte de los sueños de miles de familias chilenas.
                 </p>
                 <p>
-                  Comenzamos con un pequeño proyecto de 15 parcelas en Los Andes y, gracias a la
-                  confianza de nuestros clientes, hemos crecido hasta convertirnos en referentes
-                  del sector inmobiliario de parcelas en la zona central.
+                  <span className="font-bold text-primary">Inmobiliaria Chicureo</span> nació con una
+                  misión clara: devolver el acceso a la tierra a personas que luchan por construir
+                  su patrimonio. Comenzamos con un pequeño proyecto de 15 parcelas en Los Andes y,
+                  impulsados por la confianza de nuestros primeros clientes, no paramos.
                 </p>
                 <p>
-                  Hoy, con más de <span className="font-bold text-primary">2.000 parcelas vendidas</span> y
-                  <span className="font-bold text-primary"> 20 proyectos exitosos</span>, seguimos
-                  comprometidos con ofrecer terrenos con plusvalía, documentación al día y facilidades
-                  de pago para que más familias cumplan su sueño.
+                  Hoy somos más que números: <span className="font-bold text-primary">2.000+ parcelas
+                  vendidas, 20+ proyectos exitosos, 15+ años</span> de experiencia. Pero lo que realmente
+                  importa es que hemos visto cómo nuestros clientes cultivan, construyen y crean
+                  memorias en cada propiedad que adquieren con nosotros.
                 </p>
 
-                <div className="flex flex-wrap gap-4 pt-4">
-                  <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
-                    <CheckCircle2 size={18} className="text-primary" strokeWidth={2.5} />
-                    <span className="text-sm font-semibold text-primary">Rol propio garantizado</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
-                    <CheckCircle2 size={18} className="text-primary" strokeWidth={2.5} />
-                    <span className="text-sm font-semibold text-primary">Facilidades de pago</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
-                    <CheckCircle2 size={18} className="text-primary" strokeWidth={2.5} />
-                    <span className="text-sm font-semibold text-primary">Acompañamiento total</span>
+                <div className="mt-8 pt-6 border-t border-gray-200">
+                  <p className="text-sm uppercase tracking-[0.2em] text-primary font-bold mb-4">
+                    Por qué confían en nosotros
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
+                      <CheckCircle2 size={18} className="text-primary" strokeWidth={2.5} />
+                      <span className="text-sm font-semibold text-primary">Rol propio garantizado</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
+                      <CheckCircle2 size={18} className="text-primary" strokeWidth={2.5} />
+                      <span className="text-sm font-semibold text-primary">Facilidades de pago</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
+                      <CheckCircle2 size={18} className="text-primary" strokeWidth={2.5} />
+                      <span className="text-sm font-semibold text-primary">Acompañamiento total</span>
+                    </div>
                   </div>
                 </div>
               </div>
