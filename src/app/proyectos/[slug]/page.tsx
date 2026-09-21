@@ -250,17 +250,7 @@ export default function ProyectoDetalle() {
               <div className="bg-white rounded-2xl border-2 border-primary/20 p-6 shadow-lg sticky top-24">
                 <div className="text-sm text-gray-600 uppercase tracking-wider mb-2">Precio desde</div>
                 <div className="text-4xl font-bold text-primary mb-2">{project.price}</div>
-                <div className="text-sm text-gray-600 mb-6">Rango: {project.priceRange}</div>
-
-                <div className="mb-6">
-                  <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-600">Vendido</span>
-                    <span className="font-bold text-primary">{percentageSold}%</span>
-                  </div>
-                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-primary transition-all duration-1000" style={{ width: `${percentageSold}%` }}></div>
-                  </div>
-                </div>
+                <div className="text-sm text-gray-600 mb-8">Rango: {project.priceRange}</div>
 
                 <div className="space-y-3 mb-6">
                   <a href="#contacto">
@@ -271,6 +261,10 @@ export default function ProyectoDetalle() {
                   <button className="w-full border-2 border-gray-200 text-gray-700 font-semibold py-3 rounded-lg hover:border-primary hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
                     <Download size={18} />
                     Descargar Brochure
+                  </button>
+                  <button className="w-full border-2 border-gray-200 text-gray-700 font-semibold py-3 rounded-lg hover:border-primary hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                    <Map size={18} />
+                    Descargar Plano
                   </button>
                   <button className="w-full border-2 border-gray-200 text-gray-700 font-semibold py-3 rounded-lg hover:border-primary hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
                     <Share2 size={18} />
