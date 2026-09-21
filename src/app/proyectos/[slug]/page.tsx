@@ -64,7 +64,7 @@ const projectsData: { [key: string]: any } = {
     coordinates: { lat: -32.8333, lng: -70.5167 },
     masterPlan: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80",
     brochure: "/brochures/mirador-rinconada.pdf",
-    tourVirtual: "https://my.matterport.com/show/?m=SxQL3iGyoDo"
+    tourVirtual: "https://ichicureo.cl/360/mirador-de-rinconada/"
   }
 };
 
