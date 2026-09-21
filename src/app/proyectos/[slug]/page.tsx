@@ -47,11 +47,10 @@ const projectsData: { [key: string]: any } = {
       { name: "Sin torres", icon: RadioTower, description: "Zona libre" }
     ],
     highlights: [
-      "Vista panorámica a la Cordillera",
-      "10 minutos del centro",
-      "Sector de alta plusvalía",
-      "Facilidades de pago 24 meses",
-      "Asesoría legal incluida"
+      "Sector de alta plusvalía y crecimiento sostenido",
+      "Inversión segura con proyección de valorización",
+      "Zona en desarrollo con infraestructura en expansión",
+      "Excelente conectividad con principales centros urbanos"
     ],
     nearbyServices: [
       { name: "Colegio San Felipe", icon: School, distance: "2,5 km", time: "5 min" },
