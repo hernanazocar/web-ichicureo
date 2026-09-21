@@ -102,15 +102,6 @@ export default function ProyectoDetalle() {
         {/* Contenido */}
         <div className="relative z-10 w-full pb-16 pt-32">
           <div className="container mx-auto px-6 lg:px-8">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-sm text-white/80 mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
-              <ChevronRight size={16} />
-              <Link href="/proyectos" className="hover:text-white transition-colors">Proyectos</Link>
-              <ChevronRight size={16} />
-              <span className="text-white font-semibold">{project.title}</span>
-            </div>
-
             {/* Logo destacado */}
             {project.logo && (
               <div className="mb-6">
@@ -333,14 +324,14 @@ export default function ProyectoDetalle() {
       </section>
 
       {/* Ubicación Estratégica */}
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4">
-              <MapPin size={32} className="text-primary" strokeWidth={2.5} />
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-primary/10 rounded-xl mb-3">
+              <MapPin size={20} className="text-primary" strokeWidth={2.5} />
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Ubicación Estratégica</h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <h2 className="text-xl font-bold text-gray-900 mb-2">Ubicación Estratégica</h2>
+            <p className="text-gray-600 text-sm max-w-2xl mx-auto">
               Cerca de todo lo que necesitas para tu día a día
             </p>
           </div>
@@ -376,18 +367,18 @@ export default function ProyectoDetalle() {
 
       {/* Tour Virtual */}
       {project.tourVirtual && (
-        <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 relative overflow-hidden">
+        <section className="py-12 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 relative overflow-hidden">
           {/* Elementos decorativos de fondo */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
 
           <div className="container mx-auto px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-2xl mb-6 border border-primary/20">
-                <Eye size={32} className="text-primary" strokeWidth={2.5} />
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-xl mb-3 border border-primary/20">
+                <Eye size={20} className="text-primary" strokeWidth={2.5} />
               </div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Tour Virtual 360°</h2>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              <h2 className="text-xl font-bold text-gray-900 mb-2">Tour Virtual 360°</h2>
+              <p className="text-gray-600 text-sm max-w-2xl mx-auto">
                 Explora cada rincón del proyecto desde la comodidad de tu hogar
               </p>
             </div>
