@@ -287,7 +287,7 @@ export default function ProyectoDetalle() {
                 <div className="text-4xl font-bold text-primary mb-2">{project.price}</div>
                 <div className="text-sm text-gray-600 mb-8">Rango: {project.priceRange}</div>
 
-                <div className="space-y-3 mb-6">
+                <div className="space-y-4 mb-6">
                   <a href="#contacto">
                     <button className="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-primary-dark transition-colors">
                       Agendar Visita
