@@ -167,29 +167,55 @@ export default function ProyectoDetalle() {
       </section>
 
       {/* Barra de acciones rápidas */}
-      <section className="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+      <section className="bg-white/95 backdrop-blur-lg border-b border-gray-200 sticky top-0 z-40 shadow-lg">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between py-4">
-            <div className="flex items-center gap-6">
-              <button className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary transition-colors">
-                <Download size={18} />
-                Descargar Brochure
-              </button>
-              <button className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary transition-colors">
-                <Map size={18} />
-                Ver Plano
-              </button>
-              <a href={project.tourVirtual} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary transition-colors">
-                <Eye size={18} />
-                Tour 360°
+            <div className="flex items-center gap-3">
+              {/* Tour 360° */}
+              <a
+                href={project.tourVirtual}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+              >
+                <Eye size={18} strokeWidth={2.5} />
+                <span className="text-sm">Tour 360°</span>
               </a>
-              <button className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary transition-colors">
-                <Navigation size={18} />
-                Cómo Llegar
+
+              {/* Ver Plano */}
+              <button className="group flex items-center gap-2 px-4 py-2.5 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-primary hover:text-white hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <FileText size={18} strokeWidth={2.5} />
+                <span className="text-sm">Ver Plano</span>
               </button>
+
+              {/* Ver Brochure */}
+              <button className="group flex items-center gap-2 px-4 py-2.5 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-primary hover:text-white hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <Eye size={18} strokeWidth={2.5} />
+                <span className="text-sm">Ver Brochure</span>
+              </button>
+
+              {/* Descargar Plano */}
+              <button className="group flex items-center gap-2 px-4 py-2.5 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-primary hover:text-white hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <Download size={18} strokeWidth={2.5} />
+                <span className="text-sm">Descargar Plano</span>
+              </button>
+
+              {/* Cómo Llegar */}
+              <a
+                href={`https://www.google.com/maps?q=${project.coordinates.lat},${project.coordinates.lng}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 px-4 py-2.5 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-primary hover:text-white hover:shadow-lg hover:scale-105 transition-all duration-300"
+              >
+                <Navigation size={18} strokeWidth={2.5} />
+                <span className="text-sm">Cómo Llegar</span>
+              </a>
             </div>
+
+            {/* CTA Principal */}
             <a href="#contacto">
-              <button className="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-primary-dark transition-colors">
+              <button className="bg-gradient-to-r from-primary to-green-600 text-white px-8 py-3 rounded-xl font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                <Calendar size={20} strokeWidth={2.5} />
                 Agendar Visita
               </button>
             </a>
