@@ -11,7 +11,8 @@ import {
   Lightbulb, Square, RadioTower, Phone, Mail, User, MessageSquare,
   CheckCircle2, Download, Share2, FileText, Map, Maximize2, Eye,
   ChevronLeft, ExternalLink, Navigation, School, ShoppingCart, Building,
-  Hospital, Store, Trees, Home
+  Hospital, Store, Trees, Home, Rocket, FileCheck, Split, HardHat,
+  FileSignature, KeyRound
 } from "lucide-react";
 
 const projectsData: { [key: string]: any } = {
@@ -63,7 +64,15 @@ const projectsData: { [key: string]: any } = {
     coordinates: { lat: -32.8333, lng: -70.5167 },
     masterPlan: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80",
     brochure: "/brochures/mirador-rinconada.pdf",
-    tourVirtual: "https://ichicureo.cl/360/mirador-de-rinconada/"
+    tourVirtual: "https://ichicureo.cl/360/mirador-de-rinconada/",
+    timeline: [
+      { fase: "Lanzamiento", descripcion: "Apertura oficial del proyecto y venta de unidades", icon: Rocket, estado: "completado" },
+      { fase: "Ingreso al SAG", descripcion: "Presentación del proyecto ante el Servicio Agrícola y Ganadero", icon: FileCheck, estado: "completado" },
+      { fase: "Subdivisión Aprobada", descripcion: "Aprobación oficial de la subdivisión del terreno", icon: Split, estado: "en-curso" },
+      { fase: "Inicio de Obras", descripcion: "Comienzo de la construcción de caminos y urbanización", icon: HardHat, estado: "pendiente" },
+      { fase: "Escrituración", descripcion: "Firma y tramitación de escrituras de cada parcela", icon: FileSignature, estado: "pendiente" },
+      { fase: "Entrega", descripcion: "Entrega final de las parcelas a sus propietarios", icon: KeyRound, estado: "pendiente" }
+    ]
   }
 };
 
@@ -377,6 +386,84 @@ export default function ProyectoDetalle() {
           </div>
         </div>
       </section>
+
+      {/* Timeline / Fases del Proyecto */}
+      {project.timeline && (
+        <section className="py-12 bg-white relative overflow-hidden">
+          <div className="container mx-auto px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary to-green-600 rounded-xl mb-4 shadow-lg">
+                <Rocket size={24} className="text-white" strokeWidth={2.5} />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Fases del Proyecto</h2>
+              <p className="text-gray-600 text-sm max-w-2xl mx-auto">
+                Sigue el avance del proyecto en cada una de sus etapas
+              </p>
+            </div>
+
+            <div className="max-w-5xl mx-auto">
+              {/* Línea de tiempo */}
+              <div className="relative">
+                {/* Línea conectora (desktop) */}
+                <div className="hidden md:block absolute top-8 left-0 right-0 h-1 bg-gray-200 rounded-full">
+                  <div
+                    className="h-full bg-gradient-to-r from-primary to-green-500 rounded-full transition-all duration-700"
+                    style={{
+                      width: `${(project.timeline.filter((t: any) => t.estado === "completado").length / project.timeline.length) * 100}%`
+                    }}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-6 gap-8 md:gap-4">
+                  {project.timeline.map((fase: any, index: number) => {
+                    const Icon = fase.icon;
+                    const isCompletado = fase.estado === "completado";
+                    const isEnCurso = fase.estado === "en-curso";
+
+                    return (
+                      <div key={index} className="relative flex md:flex-col items-start md:items-center gap-4 md:gap-0 text-left md:text-center">
+                        {/* Ícono / nodo */}
+                        <div
+                          className={`relative z-10 flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-4 border-white transition-transform
+                            ${isCompletado ? "bg-gradient-to-br from-primary to-green-600" : ""}
+                            ${isEnCurso ? "bg-gradient-to-br from-amber-400 to-orange-500 animate-pulse" : ""}
+                            ${!isCompletado && !isEnCurso ? "bg-gray-200" : ""}
+                          `}
+                        >
+                          <Icon
+                            size={26}
+                            className={isCompletado || isEnCurso ? "text-white" : "text-gray-400"}
+                            strokeWidth={2.5}
+                          />
+                        </div>
+
+                        <div className="md:mt-4">
+                          <h4 className={`font-bold text-sm mb-1 ${isCompletado || isEnCurso ? "text-gray-900" : "text-gray-400"}`}>
+                            {fase.fase}
+                          </h4>
+                          <p className={`text-xs leading-snug ${isCompletado || isEnCurso ? "text-gray-600" : "text-gray-400"}`}>
+                            {fase.descripcion}
+                          </p>
+                          {isEnCurso && (
+                            <span className="inline-block mt-2 px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase tracking-wide rounded-full">
+                              En curso
+                            </span>
+                          )}
+                          {isCompletado && (
+                            <span className="inline-flex items-center gap-1 mt-2 px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wide rounded-full">
+                              <CheckCircle2 size={10} /> Completado
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Tour Virtual */}
       {project.tourVirtual && (
