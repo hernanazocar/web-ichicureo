@@ -11,7 +11,8 @@ import {
   Lightbulb, Square, RadioTower, Phone, Mail, User, MessageSquare,
   CheckCircle2, Download, Share2, FileText, Map, Maximize2, Eye,
   ChevronLeft, ExternalLink, Navigation, School, ShoppingCart, Building,
-  Hospital, Store, Trees, Home
+  Hospital, Store, Trees, Home, Rocket, FileCheck, Split, HardHat,
+  FileSignature, KeyRound
 } from "lucide-react";
 
 const projectsData: { [key: string]: any } = {
@@ -63,7 +64,15 @@ const projectsData: { [key: string]: any } = {
     coordinates: { lat: -32.8333, lng: -70.5167 },
     masterPlan: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80",
     brochure: "/brochures/mirador-rinconada.pdf",
-    tourVirtual: "https://ichicureo.cl/360/mirador-de-rinconada/"
+    tourVirtual: "https://ichicureo.cl/360/mirador-de-rinconada/",
+    timeline: [
+      { fase: "Lanzamiento", descripcion: "Apertura oficial del proyecto y venta de unidades", icon: Rocket, estado: "completado" },
+      { fase: "Ingreso al SAG", descripcion: "Presentación del proyecto ante el Servicio Agrícola y Ganadero", icon: FileCheck, estado: "completado" },
+      { fase: "Subdivisión Aprobada", descripcion: "Aprobación oficial de la subdivisión del terreno", icon: Split, estado: "en-curso" },
+      { fase: "Inicio de Obras", descripcion: "Comienzo de la construcción de caminos y urbanización", icon: HardHat, estado: "pendiente" },
+      { fase: "Escrituración", descripcion: "Firma y tramitación de escrituras de cada parcela", icon: FileSignature, estado: "pendiente" },
+      { fase: "Entrega", descripcion: "Entrega final de las parcelas a sus propietarios", icon: KeyRound, estado: "pendiente" }
+    ]
   }
 };
 
@@ -323,47 +332,38 @@ export default function ProyectoDetalle() {
       </section>
 
       {/* Ubicación Estratégica */}
-      <section className="py-12 bg-gradient-to-br from-blue-50/30 via-white to-gray-50 relative overflow-hidden">
+      <section className="py-10 bg-gradient-to-br from-gray-50 via-white to-primary/5 relative overflow-hidden">
         {/* Elementos decorativos */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
 
         <div className="container mx-auto px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl mb-4 shadow-lg">
-              <MapPin size={24} className="text-white" strokeWidth={2.5} />
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary to-primary-dark rounded-xl mb-3 shadow-md">
+              <MapPin size={20} className="text-white" strokeWidth={2.5} />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Ubicación Estratégica</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">Ubicación Estratégica</h2>
             <p className="text-gray-600 text-sm max-w-2xl mx-auto">
               Cerca de todo lo que necesitas para tu día a día
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-5xl mx-auto">
             {project.nearbyServices?.map((service: any, index: number) => {
               const Icon = service.icon;
-              const colors = [
-                { bg: 'from-blue-500 to-blue-600', icon: 'text-blue-600', border: 'border-blue-200', hover: 'hover:border-blue-400' },
-                { bg: 'from-green-500 to-green-600', icon: 'text-green-600', border: 'border-green-200', hover: 'hover:border-green-400' },
-                { bg: 'from-purple-500 to-purple-600', icon: 'text-purple-600', border: 'border-purple-200', hover: 'hover:border-purple-400' },
-                { bg: 'from-orange-500 to-orange-600', icon: 'text-orange-600', border: 'border-orange-200', hover: 'hover:border-orange-400' },
-                { bg: 'from-pink-500 to-pink-600', icon: 'text-pink-600', border: 'border-pink-200', hover: 'hover:border-pink-400' },
-                { bg: 'from-teal-500 to-teal-600', icon: 'text-teal-600', border: 'border-teal-200', hover: 'hover:border-teal-400' },
-              ];
-              const color = colors[index % colors.length];
 
               return (
-                <div key={index} className={`group bg-white rounded-2xl p-5 border-2 ${color.border} ${color.hover} hover:shadow-xl transition-all duration-300`}>
-                  <div className="flex items-center gap-4 mb-3">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${color.bg} flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
-                      <Icon size={28} className="text-white" strokeWidth={2.5} />
+                <div key={index} className="group bg-white rounded-xl p-3 border border-gray-200 hover:border-primary/40 hover:shadow-md transition-all duration-300">
+                  <div className="flex items-center gap-2.5 mb-2">
+                    <div className="w-9 h-9 flex-shrink-0 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <Icon size={18} className="text-primary" strokeWidth={2.5} />
                     </div>
-                    <div className="flex-1">
-                      <div className={`text-3xl font-bold ${color.icon}`}>{service.distance}</div>
-                      <div className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{service.time}</div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-base font-bold text-gray-900 leading-tight">{service.distance}</div>
+                      <div className="text-[10px] text-gray-400 font-semibold uppercase tracking-wide">{service.time}</div>
                     </div>
                   </div>
-                  <h4 className="font-bold text-gray-900 text-sm leading-tight">{service.name}</h4>
+                  <h4 className="font-semibold text-gray-700 text-xs leading-tight">{service.name}</h4>
                 </div>
               );
             })}
@@ -377,6 +377,94 @@ export default function ProyectoDetalle() {
           </div>
         </div>
       </section>
+
+      {/* Timeline / Fases del Proyecto */}
+      {project.timeline && (
+        <section className="py-12 bg-white relative overflow-hidden">
+          <div className="container mx-auto px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary to-green-600 rounded-xl mb-4 shadow-lg">
+                <Rocket size={24} className="text-white" strokeWidth={2.5} />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Fases del Proyecto</h2>
+              <p className="text-gray-600 text-sm max-w-2xl mx-auto">
+                Sigue el avance del proyecto en cada una de sus etapas
+              </p>
+            </div>
+
+            <div className="max-w-5xl mx-auto">
+              {/* Línea de tiempo */}
+              <div className="relative">
+                {/* Línea conectora (desktop) */}
+                <div className="hidden md:block absolute top-8 left-0 right-0 h-1 bg-gray-200 rounded-full">
+                  <div
+                    className="h-full bg-gradient-to-r from-primary to-green-500 rounded-full transition-all duration-700"
+                    style={{
+                      width: `${(project.timeline.filter((t: any) => t.estado === "completado").length / project.timeline.length) * 100}%`
+                    }}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-6 gap-0 md:gap-4">
+                  {project.timeline.map((fase: any, index: number) => {
+                    const Icon = fase.icon;
+                    const isCompletado = fase.estado === "completado";
+                    const isEnCurso = fase.estado === "en-curso";
+                    const isLast = index === project.timeline.length - 1;
+
+                    return (
+                      <div key={index} className="relative flex md:flex-col items-start md:items-center gap-4 md:gap-0 text-left md:text-center pb-8 md:pb-0">
+                        {/* Línea conectora vertical (mobile) */}
+                        {!isLast && (
+                          <div className="md:hidden absolute left-8 top-16 bottom-0 w-1 -translate-x-1/2 bg-gray-200 rounded-full">
+                            {isCompletado && (
+                              <div className="w-full h-full bg-gradient-to-b from-primary to-green-500 rounded-full" />
+                            )}
+                          </div>
+                        )}
+
+                        {/* Ícono / nodo */}
+                        <div
+                          className={`relative z-10 flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-4 border-white transition-transform
+                            ${isCompletado ? "bg-gradient-to-br from-primary to-green-600" : ""}
+                            ${isEnCurso ? "bg-gradient-to-br from-amber-400 to-orange-500 animate-pulse" : ""}
+                            ${!isCompletado && !isEnCurso ? "bg-gray-200" : ""}
+                          `}
+                        >
+                          <Icon
+                            size={26}
+                            className={isCompletado || isEnCurso ? "text-white" : "text-gray-400"}
+                            strokeWidth={2.5}
+                          />
+                        </div>
+
+                        <div className="md:mt-4">
+                          <h4 className={`font-bold text-sm mb-1 ${isCompletado || isEnCurso ? "text-gray-900" : "text-gray-400"}`}>
+                            {fase.fase}
+                          </h4>
+                          <p className={`text-xs leading-snug ${isCompletado || isEnCurso ? "text-gray-600" : "text-gray-400"}`}>
+                            {fase.descripcion}
+                          </p>
+                          {isEnCurso && (
+                            <span className="inline-block mt-2 px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase tracking-wide rounded-full">
+                              En curso
+                            </span>
+                          )}
+                          {isCompletado && (
+                            <span className="inline-flex items-center gap-1 mt-2 px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wide rounded-full">
+                              <CheckCircle2 size={10} /> Completado
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Tour Virtual */}
       {project.tourVirtual && (
