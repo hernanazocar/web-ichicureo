@@ -98,7 +98,7 @@ export default function ProyectoDetalle() {
       <Navbar />
 
       {/* Hero con imagen de fondo */}
-      <section className="relative h-[70vh] min-h-[600px] flex items-end">
+      <section className="relative h-[85vh] min-h-[680px] sm:h-[70vh] sm:min-h-[600px] flex items-end">
         {/* Imagen de fondo */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -108,7 +108,7 @@ export default function ProyectoDetalle() {
         </div>
 
         {/* Contenido */}
-        <div className="relative z-10 w-full pb-16 pt-40 md:pt-32">
+        <div className="relative z-10 w-full pb-16 pt-28 sm:pt-32">
           <div className="container mx-auto px-6 lg:px-8">
             {/* Logo destacado */}
             {project.logo && (
