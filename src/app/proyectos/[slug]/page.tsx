@@ -108,12 +108,12 @@ export default function ProyectoDetalle() {
         </div>
 
         {/* Contenido */}
-        <div className="relative z-10 w-full pb-16 pt-32">
+        <div className="relative z-10 w-full pb-16 pt-40 md:pt-32">
           <div className="container mx-auto px-6 lg:px-8">
             {/* Logo destacado */}
             {project.logo && (
               <div className="mb-6">
-                <div className="inline-flex items-center justify-center w-32 h-32 bg-white rounded-2xl shadow-2xl p-4 border-4 border-white/50 backdrop-blur-sm">
+                <div className="inline-flex items-center justify-center w-20 h-20 md:w-32 md:h-32 bg-white rounded-2xl shadow-2xl p-3 md:p-4 border-4 border-white/50 backdrop-blur-sm">
                   <img src={project.logo} alt={`Logo ${project.title}`} className="w-full h-full object-contain" />
                 </div>
               </div>
