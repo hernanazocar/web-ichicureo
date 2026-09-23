@@ -3,11 +3,13 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 import { ChevronRight, MapPin, Droplet, Zap, Award, TrendingUp, Calendar, Sparkles, Home, Building2, Percent, Tag, FileCheck, ClipboardCheck, DoorOpen, Waypoints, Lightbulb, Square, RadioTower } from "lucide-react";
 
 const projects = [
   {
     id: 1,
+    slug: "mirador-de-rinconada",
     title: "Mirador de Rinconada",
     location: "Rinconada, Los Andes",
     price: "$34.900.000",
@@ -28,6 +30,7 @@ const projects = [
   },
   {
     id: 2,
+    slug: "hacienda-calle-larga",
     title: "Hacienda Calle Larga",
     location: "Calle Larga, Los Andes",
     price: "$49.900.000",
@@ -47,6 +50,7 @@ const projects = [
   },
   {
     id: 3,
+    slug: "villas-de-requinoa",
     title: "Villas de Requínoa",
     location: "Requínoa, VI Región",
     price: "$25.900.000",
@@ -66,6 +70,7 @@ const projects = [
   },
   {
     id: 4,
+    slug: "hacienda-las-higueras",
     title: "Hacienda Las Higueras",
     location: "Graneros, VI Región",
     price: "$45.900.000",
@@ -160,7 +165,10 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group cursor-pointer bg-white rounded-2xl hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/30"
+              >
+              <Link
+                href={`/proyectos/${project.slug}`}
+                className="group cursor-pointer block bg-white rounded-2xl hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/30"
               >
                 {/* Image */}
                 <div className="relative h-52 bg-gray-100 overflow-hidden">
@@ -325,17 +333,18 @@ export default function Projects() {
                         </div>
                       </div>
 
-                      <motion.button
+                      <motion.span
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="flex-shrink-0 group/cta px-4 py-2.5 rounded-lg bg-gradient-to-r from-primary-dark to-primary hover:from-primary hover:to-primary-light text-white font-semibold text-xs shadow-md hover:shadow-lg hover:shadow-primary/30 transition-all flex items-center gap-1.5"
                       >
                         <span>Ver más</span>
                         <ChevronRight size={14} className="group-hover/cta:translate-x-0.5 transition-transform" strokeWidth={3} />
-                      </motion.button>
+                      </motion.span>
                     </div>
                   </div>
                 </div>
+              </Link>
               </motion.div>
             );
           })}
