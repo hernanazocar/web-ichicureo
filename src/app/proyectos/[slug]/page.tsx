@@ -405,14 +405,24 @@ export default function ProyectoDetalle() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-6 gap-8 md:gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-6 gap-0 md:gap-4">
                   {project.timeline.map((fase: any, index: number) => {
                     const Icon = fase.icon;
                     const isCompletado = fase.estado === "completado";
                     const isEnCurso = fase.estado === "en-curso";
+                    const isLast = index === project.timeline.length - 1;
 
                     return (
-                      <div key={index} className="relative flex md:flex-col items-start md:items-center gap-4 md:gap-0 text-left md:text-center">
+                      <div key={index} className="relative flex md:flex-col items-start md:items-center gap-4 md:gap-0 text-left md:text-center pb-8 md:pb-0">
+                        {/* Línea conectora vertical (mobile) */}
+                        {!isLast && (
+                          <div className="md:hidden absolute left-8 top-16 bottom-0 w-1 -translate-x-1/2 bg-gray-200 rounded-full">
+                            {isCompletado && (
+                              <div className="w-full h-full bg-gradient-to-b from-primary to-green-500 rounded-full" />
+                            )}
+                          </div>
+                        )}
+
                         {/* Ícono / nodo */}
                         <div
                           className={`relative z-10 flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-4 border-white transition-transform
