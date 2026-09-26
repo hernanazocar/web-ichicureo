@@ -25,7 +25,7 @@ export default function UpcomingProjects() {
   };
 
   return (
-    <section ref={ref} className="py-16 bg-white">
+    <section id="proximos-lanzamientos" ref={ref} className="py-16 bg-white">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
