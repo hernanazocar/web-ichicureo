@@ -83,10 +83,6 @@ export default function AdminLogin() {
             </button>
           </form>
 
-          <div className="mt-6 text-center text-sm text-text-light">
-            <p>Contraseña por defecto: <code className="bg-gray-100 px-2 py-1 rounded">admin123</code></p>
-            <p className="mt-2 text-xs">Cambiar en producción</p>
-          </div>
         </div>
       </motion.div>
     </div>

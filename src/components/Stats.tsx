@@ -1,34 +1,23 @@
 "use client";
 
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Users, Briefcase, MapPin, Calendar } from "lucide-react";
 
-const stats = [
-  {
-    icon: Users,
-    number: 2500,
-    prefix: "+",
-    label: "Clientes felices"
-  },
-  {
-    icon: Briefcase,
-    number: 25,
-    prefix: "+",
-    label: "Proyectos desarrollados"
-  },
-  {
-    icon: MapPin,
-    number: 12000,
-    prefix: "+",
-    label: "Parcelas comercializadas"
-  },
-  {
-    icon: Calendar,
-    number: 10,
-    suffix: "+",
-    label: "Años de experiencia"
-  }
+interface CmsStat {
+  value: string;
+  label: string;
+  suffix: string;
+}
+
+// Icons cycle in a fixed order; the CMS controls the actual numbers/labels/suffixes.
+const icons = [Users, Briefcase, MapPin, Calendar];
+
+const defaultStats: CmsStat[] = [
+  { value: "2500", label: "Clientes felices", suffix: "+" },
+  { value: "25", label: "Proyectos desarrollados", suffix: "+" },
+  { value: "12000", label: "Parcelas comercializadas", suffix: "+" },
+  { value: "10", label: "Años de experiencia", suffix: "+" }
 ];
 
 function Counter({ value, prefix = "", suffix = "", inView }: { value: number; prefix?: string; suffix?: string; inView: boolean }) {
@@ -57,6 +46,18 @@ function Counter({ value, prefix = "", suffix = "", inView }: { value: number; p
 export default function Stats() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const [stats, setStats] = useState<CmsStat[]>(defaultStats);
+
+  useEffect(() => {
+    fetch('/api/contenido')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data.home?.stats) && data.home.stats.length > 0) {
+          setStats(data.home.stats);
+        }
+      })
+      .catch(err => console.error('Error loading stats:', err));
+  }, []);
 
   return (
     <section ref={ref} className="py-12 bg-gray-50">
@@ -79,7 +80,8 @@ export default function Stats() {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => {
-            const Icon = stat.icon;
+            const Icon = icons[index % icons.length];
+            const numericValue = parseInt(stat.value, 10) || 0;
             return (
               <motion.div
                 key={index}
@@ -138,8 +140,7 @@ export default function Stats() {
                     <div className="mb-1.5 relative">
                       <div className="absolute -inset-2 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       <Counter
-                        value={stat.number}
-                        prefix={stat.prefix}
+                        value={numericValue}
                         suffix={stat.suffix}
                         inView={isInView}
                       />
